@@ -2,7 +2,7 @@
 let DATA_URL = "";
 let QUERY_STRING = "";
 let x = "";
-
+let valid = true;
 
   
 module.exports = (app,crypto) => {
@@ -22,7 +22,10 @@ module.exports = (app,crypto) => {
         QUERY_STRING = new URL(req.body.data_url).pathname.match(/^\/channel\/(.+)$/)[1];
        }
        catch(err) {
-        if(err)  res.status(404).send('The URL is invalid! Not Found')
+           valid = false;
+        if(err)  res.status(404).render('container/index',{
+            notFound : `Such Channel link doesn't exist`
+        })
        }
        crypto.pbkdf2(QUERY_STRING, '3745e48...08d59ae', 100000, 64, 'sha512', (err, derivedKey) => {
         if (err) throw err;
@@ -32,7 +35,7 @@ module.exports = (app,crypto) => {
        const hash = crypto.createHash('sha256');
        hash.update(x + QUERY_STRING);
        const result = hash.digest('hex')
-       res.redirect(`/result/success/${result}`);
+       valid ? res.redirect(`/result/success/${result}`) : null;
     })
     .get((req,res) => {
         res.sendStatus(403);
