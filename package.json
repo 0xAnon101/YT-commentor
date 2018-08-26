@@ -5,7 +5,6 @@
   "main": "quickstart.js",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "google-auth-library": "^1.6.1",
