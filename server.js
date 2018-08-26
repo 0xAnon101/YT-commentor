@@ -5,7 +5,7 @@ const path = require('path');
 const bodyParser =  require('body-parser');
 const app = express();
 const crypto = require('crypto');
-require('dotenv').config();
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
