@@ -7,17 +7,13 @@ const app = express();
 const crypto = require('crypto');
 
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-require('./routes/routes')(app,crypto);
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use('/assets',express.static(path.join(__dirname, '/public/stylesheets')));
 app.engine('.hbs',exphbs({defaultLayout:'layout',extname:'.hbs'}));
 app.set('view engine','.hbs');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use('/assets',express.static(path.join(__dirname, '/public/stylesheets')));
-
+require('./routes/routes')(app,crypto);
 
 
 
