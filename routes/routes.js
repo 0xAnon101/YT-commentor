@@ -17,7 +17,13 @@ module.exports = (app,crypto) => {
     app.route('/commentController')
     .post((req,res) =>{
        DATA_URL = req.body.data_url;
-       QUERY_STRING =  new URL(req.body.data_url).pathname.match(/^\/channel\/(.+)$/)[1];
+      
+       try { 
+        QUERY_STRING = new URL(req.body.data_url).pathname.match(/^\/channel\/(.+)$/)[1];
+       }
+       catch(err) {
+        if(err)  res.status(404).send('The URL is invalid! Not Found')
+       }
        crypto.pbkdf2(QUERY_STRING, '3745e48...08d59ae', 100000, 64, 'sha512', (err, derivedKey) => {
         if (err) throw err;
         x = derivedKey.toString('hex'); 
