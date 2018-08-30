@@ -28,7 +28,7 @@ module.exports = (app, crypto) => {
             }
             console.log(valid)
             if (valid) {
-                crypto.pbkdf2(QUERY_STRING, '3745e48...08d59ae', 100000, 64, 'sha512', (err, derivedKey) => {
+                crypto. pbkdf2(QUERY_STRING, '3745e48...08d59ae', 100000, 64, 'sha512', (err, derivedKey) => {
                     if (err) throw err;
                     x = derivedKey.toString('hex');
                 });
@@ -64,6 +64,10 @@ module.exports = (app, crypto) => {
             URL: DATA_URL,
             QUERY: QUERY_STRING
         });
+    });
+
+    app.post('/randomCommentView',(req,res)=>{
+        console.log(req.body);
     });
 }
 
