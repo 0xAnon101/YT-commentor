@@ -4,7 +4,7 @@ var {google} = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 
 var output =  function(QUERY_STRING) {
-  console.log(QUERY_STRING+" .......................cdjkcbsdhbdjcnsjn jbjb==========================>")
+  
   
   return new Promise((resolve,reject)=> {
   var SCOPES = ['https://www.googleapis.com/auth/youtube.readonly'];
