@@ -2,9 +2,18 @@
 <p>{{content}}</p>
 <b>{{notFound}}</b>
 <div id="form-container">
-    <form action="/commentController" method="POST">
-        <label for ="input-data">Enter Youtube URL: </label><br/>
-        <input type="text" name="data_url" /><br/>
-        <button type="submit" name="data_url_submit">Check Data</button>
+    <form action="/commentController" method="POST" id="form1">
+        <label for="input-data">Enter Youtube Channel URL: </label>
+        <br/>
+        <input type="text" name="data_url" id="input-data" />
+        <br/>
+        <button type="submit" name="data_url_submit" id="button1">Check Data</button>
+    </form>
+
+    <label for="input-data1">Enter Youtube video URL: </label>
+    <br/>
+    <input type="text" name="video_url" id="input-data1" />
+    <br/>
+    <button type="button" name="video_url_submit" id="button2">Pick Randomly comment</button>
     </form>
 </div>
