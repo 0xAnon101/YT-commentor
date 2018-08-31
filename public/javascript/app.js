@@ -13,7 +13,12 @@ const sendData = (event) => {
         },
         body: JSON.stringify({urlname: url.toString()})
       })
-      .then(function(res){ console.log(res) })
+      .then(function(res){
+          console.log(res)
+          if(res.ok) {
+              window.location.replace("http://localhost:3000/getComment");
+          }
+       })
       .catch(function(error){ console.log(error)});
 }
 
